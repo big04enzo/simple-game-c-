@@ -1,0 +1,103 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+int main() {
+	    char name[50];
+
+	        char *questionList[] = {
+			        "1. Who is the founder of Microsoft?",
+				        "2. Who is considered the father of the World Wide Web?",
+					        "3. What programming language was developed by James Gosling at Sun Microsystems?",
+						        "4. What planet is known as the Red Planet?",
+							        "5. Who wrote the play 'Romeo and Juliet'?",
+								        "6. What is the capital city of Japan?",
+									        "7. What is the chemical symbol for gold?",
+										        "8. Who painted the Mona Lisa?",
+											        "9. What is the hardest natural substance on Earth?",
+												        "10. Which planet is closest to the Sun?",
+													        "11. What is the largest ocean on Earth?",
+														        "12. What is the main ingredient in guacamole?",
+															        "13. What year did the Titanic sink?",
+																        "14. What is the largest desert in the world?",
+																	        "15. Who discovered penicillin?",
+																		        "16. What is the smallest country in the world?",
+																			        "17. Who wrote 'To Kill a Mockingbird'?",
+																				        "18. What is the capital of Australia?",
+																					        "19. What gas do plants primarily use for photosynthesis?",
+																						        "20. In which city would you find the Colosseum?"
+																								    };
+
+		    char *answerOptions[][4] = {
+			            {"A. Steve Jobs", "B. Bill Gates", "C. Mark Zuckerberg", "D. Larry Page"},
+				            {"A. Bill Gates", "B. Tim Berners-Lee", "C. Steve Jobs", "D. Larry Page"},
+					            {"A. Java", "B. Python", "C. Ruby", "D. C#"},
+						            {"A. Venus", "B. Mars", "C. Jupiter", "D. Saturn"},
+							            {"A. William Shakespeare", "B. Charles Dickens", "C. Jane Austen", "D. Mark Twain"},
+								            {"A. Beijing", "B. Tokyo", "C. Seoul", "D. Bangkok"},
+									            {"A. Au", "B. Ag", "C. Fe", "D. Pb"},
+										            {"A. Vincent van Gogh", "B. Pablo Picasso", "C. Leonardo da Vinci", "D. Claude Monet"},
+											            {"A. Diamond", "B. Sapphire", "C. Ruby", "D. Emerald"},
+												            {"A. Venus", "B. Mercury", "C. Earth", "D. Mars"},
+													            {"A. Atlantic Ocean", "B. Pacific Ocean", "C. Indian Ocean", "D. Arctic Ocean"},
+														            {"A. Tomato", "B. Avocado", "C. Onion", "D. Pepper"},
+															            {"A. 1905", "B. 1912", "C. 1920", "D. 1931"},
+																            {"A. Sahara", "B. Arctic", "C. Antarctic", "D. Gobi"},
+																	            {"A. Alexander Fleming", "B. Louis Pasteur", "C. Marie Curie", "D. Jonas Salk"},
+																		            {"A. Monaco", "B. Vatican City", "C. San Marino", "D. Liechtenstein"},
+																			            {"A. Harper Lee", "B. Mark Twain", "C. Ernest Hemingway", "D. F. Scott Fitzgerald"},
+																				            {"A. Sydney", "B. Melbourne", "C. Canberra", "D. Brisbane"},
+																					            {"A. Oxygen", "B. Carbon Dioxide", "C. Nitrogen", "D. Hydrogen"},
+																						            {"A. Rome", "B. Paris", "C. Athens", "D. Istanbul"}
+				        };
+
+		        char correctAnswers[] = {
+				        'B', 'B', 'A', 'B', 'A', 'B', 'A', 'C', 'A', 'B', 'B', 'B', 'B', 
+					        'A', 'A', 'B', 'C', 'B', 'A'
+							    };
+
+			    int totalQuestions = sizeof(questionList) / sizeof(questionList[0]);
+			        char userAnswer;
+				    int userScore = 0;
+
+				        printf("\n****************************************************\n");
+					    printf("           Welcome to the enzo Game!\n");
+					        printf("****************************************************\n\n");
+
+						    printf("What is your name? ");
+						        fgets(name, sizeof(name), stdin);
+							    size_t len = strlen(name);
+							        if (len > 0 && name[len - 1] == '\n') {
+									        name[len - 1] = '\0';
+										    }
+
+								    printf("\nHello, %s! Let's get started with the enzo game.\n\n", name);
+
+								        for (int i = 0; i < totalQuestions; i++) {
+										        printf("%s\n", questionList[i]);
+											        for (int j = 0; j < 4; j++) {
+													            printf("%s\n", answerOptions[i][j]);
+														            }
+
+												        printf("Enter your answer (A, B, C, or D): ");
+													        scanf(" %c", &userAnswer);
+														        userAnswer = toupper(userAnswer);
+
+															        if (userAnswer == correctAnswers[i]) {
+																	            printf("Correct!\n\n");
+																		                userScore++;
+																				        } else if (userAnswer == 'A' || userAnswer == 'B' || userAnswer == 'C' || userAnswer == 'D') {
+																						            printf("Wrong!\n\n");
+																							            } else {
+																									                printf("Invalid option. Please enter A, B, C, or D.\n\n");
+																											        }
+																    }
+
+									    printf("****************************************************\n");
+									        printf("Congratulations, %s!\n", name);
+										    printf("Your final score is %d out of %d.\n", userScore, totalQuestions);
+										        printf("****************************************************\n");
+
+											    return 0;
+}
+
